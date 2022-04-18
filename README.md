@@ -1,3 +1,9 @@
+17-04-2022
+
+- Creacion de las Paginas de los Equipos.
+
+- Busqueda de como optimar el pintado del cuadro de carga, para no tener que escribir tantas veces el mismo codigo.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
