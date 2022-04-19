@@ -2,7 +2,7 @@
 
 - Creacion de las Paginas de los Equipos.
 
-- Busqueda de como optimar el pintado del cuadro de carga, para no tener que escribir tantas veces el mismo codigo.
+- Busqueda de como optimizar el pintado del cuadro de carga, para no tener que escribir tantas veces el mismo codigo.
 
 18-04-2022
 
