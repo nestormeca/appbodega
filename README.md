@@ -4,6 +4,11 @@
 
 - Busqueda de como optimar el pintado del cuadro de carga, para no tener que escribir tantas veces el mismo codigo.
 
+18-04-2022
+
+- Se creo la barra de navegacion
+- Se crearon las rutas react-route-dom
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

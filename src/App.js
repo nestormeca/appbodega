@@ -10,6 +10,7 @@ import Komatsu from "./pages/Komatsu";
 import Hyster from "./pages/Hyster";
 import Hyundai from "./pages/Hyundai";
 import GrupoElectrogeno from "./pages/GrupoElectrogeno";
+import Bodega from "./pages/Bodega";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -19,38 +20,19 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/">
-          <Route path="login" element={<Login />} />
-          <Route
-            index
-            element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
-            }
-          />
-          <Route path="cargacombustible/equipos" element={<Equipos />} />
-          <Route path="cargacombustible" element={<CargaCombustible />} />
-          <Route
-            path="cargacombustible/equipos/komatsu"
-            element={<Komatsu />}
-          />
-          <Route path="cargacombustible/equipos/hyster" element={<Hyster />} />
-          <Route
-            path="cargacombustible/equipos/hyundai"
-            element={<Hyundai />}
-          />
-          <Route
-            path="cargacombustible/equipos/grupoelectrogeno"
-            element={
-              <GrupoElectrogeno options={options} cargaInputs={cargaInputs} />
-            }
-          />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <RequireAuth>
+            <Home />
+          </RequireAuth>
+        }
+      />
+
+      <Route path="login" element={<Login />} />
+      <Route path="bodega" element={<Bodega />} />
+    </Routes>
   );
 }
 
