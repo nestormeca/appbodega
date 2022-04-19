@@ -9,10 +9,10 @@ import "./index.css";
 //import "semantic-ui-css/semantic.min.css";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <AuthContextProvider>
+  <AuthContextProvider>
+    <BrowserRouter>
       <App />
-    </AuthContextProvider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </AuthContextProvider>,
   document.getElementById("root")
 );

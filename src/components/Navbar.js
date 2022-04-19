@@ -16,10 +16,10 @@ const Navbar = () => {
         <NavLink className="p-2 text-decoration-none" to="/bodega">
           Bodega
         </NavLink>
-        <NavLink className="p-2 text-decoration-none " to="komatsu">
-          Matencion
+        <NavLink className="p-2 text-decoration-none " to="/mantencion">
+          Mantencion
         </NavLink>
-        <NavLink className="p-2  text-decoration-none " to="komatsu">
+        <NavLink className="p-2  text-decoration-none " to="/abastecimiento">
           Abastecimiento
         </NavLink>
         <NavLink className="p-2  text-decoration-none " to="/login">
