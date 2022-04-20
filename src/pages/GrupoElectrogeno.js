@@ -74,7 +74,7 @@ const GrupoElectrogeno = () => {
 
   return (
     <>
-      <form className="container w-50 mt-5">
+      <form className="container w-50 mt-5 mb-3">
         <div className="row align-items-center">
           <div className="col">Grupo Electrogeno</div>
           <div className="col">HoroMetro Inicial</div>

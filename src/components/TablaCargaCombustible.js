@@ -26,7 +26,7 @@ export const TablaCargaCombustible = () => {
     {
       field: "fecha",
       headerName: "Fecha y Hora",
-      width: 500,
+      width: 200,
     },
   ];
 
@@ -51,7 +51,7 @@ export const TablaCargaCombustible = () => {
   }, []);
 
   return (
-    <Container style={{ height: 400, width: 800 }}>
+    <Container style={{ height: 400, width: 700 }}>
       <DataGrid
         rows={data}
         columns={columns}

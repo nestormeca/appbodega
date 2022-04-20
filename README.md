@@ -9,6 +9,10 @@
 - Se creo la barra de navegacion
 - Se crearon las rutas react-route-dom
 
+20-04-2022
+
+- Se estiliso la pagina de Bodega, los botones de los equipos.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

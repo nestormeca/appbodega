@@ -1,16 +1,7 @@
 import { Box, Container, Typography } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import useStyles from "../styles";
-import {
-  setDoc,
-  doc,
-  serverTimestamp,
-  updateDoc,
-  arrayUnion,
-  collection,
-  addDoc,
-  documentId,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useState } from "react";
 import { TablaCargaCombustible } from "../components/TablaCargaCombustible";
@@ -55,7 +46,7 @@ export default function DataTable({ cargaInputs }) {
     e.preventDefault();
 
     try {
-      const res = await addDoc(collection(db, `${mes}`), {
+      await addDoc(collection(db, `${mes}`), {
         contador: [`${data.contador}`],
         horometro: [`${data.horometro}`],
         litros: [`${data.litros}`],
