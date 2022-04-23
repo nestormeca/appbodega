@@ -124,7 +124,7 @@ const Hyundai = () => {
         </button>
         {/* </div> */}
       </form>
-      <TablaCargaCombustible />
+      <TablaCargaCombustible props={"hyundai"} />
     </>
   );
 };

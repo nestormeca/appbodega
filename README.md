@@ -13,6 +13,10 @@
 
 - Se estiliso la pagina de Bodega, los botones de los equipos.
 
+22-04-20022
+
+- Se terminaron de crear las paginas para cada equipo.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

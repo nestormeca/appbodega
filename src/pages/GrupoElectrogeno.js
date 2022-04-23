@@ -127,7 +127,7 @@ const GrupoElectrogeno = () => {
         </button>
         {/* </div> */}
       </form>
-      <TablaCargaCombustible />
+      <TablaCargaCombustible props={"grupoElectrogeno"} />
     </>
   );
 };

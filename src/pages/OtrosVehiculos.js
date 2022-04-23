@@ -4,7 +4,7 @@ import { db } from "../firebase";
 import { useState } from "react";
 import { TablaCargaCombustible } from "../components/TablaCargaCombustible";
 
-const Hyster = () => {
+const OtrosVehiculos = () => {
   const [data, setData] = useState({});
 
   const getFecha = () => {
@@ -42,12 +42,16 @@ const Hyster = () => {
     e.preventDefault();
 
     try {
-      await setDoc(doc(cargaDB, "hyster", `Mes-${mes}`, `${getFecha()}`), {
-        contador: `${data.contador}`,
-        horometro: `${data.horometro}`,
-        litros: `${data.litros}`,
-        fecha: getFecha(),
-      });
+      await setDoc(
+        doc(cargaDB, "otrosvehiculos", `Mes-${mes}`, `${getFecha()}`),
+        {
+          contador: `${data.contador}`,
+          horometro: `${data.horometro}`,
+          litros: `${data.litros}`,
+          vehiculo: `${data.vehiculo}`,
+          fecha: getFecha(),
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -73,7 +77,7 @@ const Hyster = () => {
     <>
       <form className="container w-50 mt-5 mb-3">
         <div className="row align-items-center">
-          <div className="col">Hyster</div>
+          <div className="col">Otros Vehiculos</div>
           <div className="col">HoroMetro Inicial</div>
           <div className="col">HoroMetro Final</div>
           <div className="col">Abril-2022</div>
@@ -117,6 +121,17 @@ const Hyster = () => {
             placeholder="Contador"
             onChange={handleInput}
           />
+          <span className="input-group-text" id="basic-addon3">
+            Vehiculo:
+          </span>
+          <input
+            className="form-control"
+            id="vehiculo"
+            label="vehiculo"
+            type="strim"
+            placeholder="Vehiculo"
+            onChange={handleInput}
+          />
         </div>
         {/* <div className="d-md-flex justify-content-md-center"> */}
         <button type="submit" className="btn btn-primary" onClick={handleAdd}>
@@ -124,9 +139,9 @@ const Hyster = () => {
         </button>
         {/* </div> */}
       </form>
-      <TablaCargaCombustible props={"hyster"} />
+      <TablaCargaCombustible props={"otrosvehiculos"} />
     </>
   );
 };
 
-export default Hyster;
+export default OtrosVehiculos;

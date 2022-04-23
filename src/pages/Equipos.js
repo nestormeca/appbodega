@@ -24,10 +24,7 @@ const Equipos = () => {
           >
             Grupo Electrogeno
           </Link>
-          <Link
-            className="p-3 border bg-light text-center"
-            to="grupoelectrogeno"
-          >
+          <Link className="p-3 border bg-light text-center" to="otrosvehiculos">
             Otros Vehiculos
           </Link>
         </div>

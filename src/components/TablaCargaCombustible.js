@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 
-export const TablaCargaCombustible = () => {
+export const TablaCargaCombustible = ({ props }) => {
   const [data, setData] = useState([]);
 
   const columns = [
@@ -32,7 +32,7 @@ export const TablaCargaCombustible = () => {
 
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, "cargaCombustible", "grupoElectrogeno", "Mes-4"),
+      collection(db, "cargaCombustible", `${props}`, "Mes-4"),
       (snapShot) => {
         let list = [];
         snapShot.docs.forEach((doc) => {

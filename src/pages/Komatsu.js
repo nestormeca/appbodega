@@ -36,13 +36,13 @@ const Komatsu = () => {
     setData({ ...data, [id]: value, grua });
   };
 
-  const komatsuDB = collection(db, "cargaCombustible");
+  const cargaDB = collection(db, "cargaCombustible");
 
   const handleAdd = async (e) => {
     e.preventDefault();
 
     try {
-      await setDoc(doc(komatsuDB, "komatsu", `Mes-${mes}`, `${getFecha()}`), {
+      await setDoc(doc(cargaDB, "komatsu", `Mes-${mes}`, `${getFecha()}`), {
         contador: `${data.contador}`,
         horometro: `${data.horometro}`,
         litros: `${data.litros}`,
@@ -71,9 +71,9 @@ const Komatsu = () => {
 
   return (
     <>
-      <form className="container w-50 mt-5">
+      <form className="container w-50 mt-5 mb-3">
         <div className="row align-items-center">
-          <div className="col">Grua Komatsu</div>
+          <div className="col">Komatsu</div>
           <div className="col">HoroMetro Inicial</div>
           <div className="col">HoroMetro Final</div>
           <div className="col">Abril-2022</div>
@@ -124,7 +124,7 @@ const Komatsu = () => {
         </button>
         {/* </div> */}
       </form>
-      <TablaCargaCombustible />
+      <TablaCargaCombustible props={"komatsu"} />
     </>
   );
 };
