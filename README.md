@@ -13,9 +13,13 @@
 
 - Se estiliso la pagina de Bodega, los botones de los equipos.
 
-22-04-20022
+22-04-2022
 
 - Se terminaron de crear las paginas para cada equipo.
+
+24-04-2022
+
+- Se crea la funcion que totaliza los litros cargados
 
 # Getting Started with Create React App
 

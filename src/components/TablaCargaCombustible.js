@@ -50,8 +50,19 @@ export const TablaCargaCombustible = ({ props }) => {
     };
   }, []);
 
+  const litrosCargados = data.map((mov, i) => {
+    return parseInt(mov.litros);
+  });
+
+  const sumatoria = litrosCargados.reduce((acc, cur, i, arr) => {
+    return acc + cur;
+  }, 0);
+
+  console.log(sumatoria.toFixed(3));
+
   return (
     <Container style={{ height: 400, width: 700 }}>
+      Litros Cargados: {sumatoria}Lts
       <DataGrid
         rows={data}
         columns={columns}
