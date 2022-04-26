@@ -21,6 +21,11 @@
 
 - Se crea la funcion que totaliza los litros cargados
 
+25-04-2022
+
+- Refactoring pagina de hyundai
+- Se creo un helpert que maneja las fechas
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

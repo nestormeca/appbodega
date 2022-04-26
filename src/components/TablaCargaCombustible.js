@@ -32,7 +32,7 @@ export const TablaCargaCombustible = ({ props }) => {
 
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, "cargaCombustible", `${props}`, "Mes-4"),
+      collection(db, "cargaCombustible", `${props}`, "04-2022"),
       (snapShot) => {
         let list = [];
         snapShot.docs.forEach((doc) => {
@@ -58,12 +58,11 @@ export const TablaCargaCombustible = ({ props }) => {
     return acc + cur;
   }, 0);
 
-  console.log(sumatoria.toFixed(3));
-
   return (
-    <Container style={{ height: 400, width: 700 }}>
+    <Container style={{ height: 400, width: 700, textAlign: "center" }}>
       Litros Cargados: {sumatoria}Lts
       <DataGrid
+        className="mt-3"
         rows={data}
         columns={columns}
         pageSize={30}

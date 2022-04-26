@@ -1,33 +1,12 @@
 import React from "react";
-import { setDoc, doc, collection } from "firebase/firestore";
-import { db } from "../firebase";
+import { setDoc, doc } from "firebase/firestore";
 import { useState } from "react";
 import { TablaCargaCombustible } from "../components/TablaCargaCombustible";
 
+import { getDate, getMonth, cargaDB } from "../components/Fecha";
+
 const Hyundai = () => {
   const [data, setData] = useState({});
-
-  const getFecha = () => {
-    let date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let hour = date.toLocaleTimeString();
-
-    if (month < 10) {
-      return `${day}-0${month}-${year}-${hour}`;
-    } else {
-      return `${day}-${month}-${year}-${hour}`;
-    }
-  };
-
-  const month2 = () => {
-    let date = new Date();
-    let month = date.getMonth() + 1;
-    return month;
-  };
-
-  const mes = month2();
 
   const handleInput = (e) => {
     const id = e.target.id;
@@ -36,49 +15,27 @@ const Hyundai = () => {
     setData({ ...data, [id]: value, grua });
   };
 
-  const cargaDB = collection(db, "cargaCombustible");
-
   const handleAdd = async (e) => {
     e.preventDefault();
 
     try {
-      await setDoc(doc(cargaDB, "hyundai", `Mes-${mes}`, `${getFecha()}`), {
+      await setDoc(doc(cargaDB, "hyundai", `${getMonth()}`, `${getDate()}`), {
         contador: `${data.contador}`,
         horometro: `${data.horometro}`,
         litros: `${data.litros}`,
-        fecha: getFecha(),
+        fecha: getDate(),
       });
     } catch (error) {
       console.log(error);
     }
   };
 
-  //   const handleAdd = async (e) => {
-  //     e.preventDefault();
-
-  //     const equipo = doc(db, "komatsu");
-  //     try {
-  //       const res = await updateDoc(equipo, {
-  //         contador: arrayUnion(`${data.contador}`),
-  //         horometro: arrayUnion(`${data.horometro}`),
-  //         litros: arrayUnion(`${data.litros}`),
-  //         fecha: arrayUnion(`${getFecha()}`),
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
   return (
     <>
-      <form className="container w-50 mt-5">
+      <form className="container w-50 mt-5 justify-content-center">
         <div className="row align-items-center">
-          <div className="col">Grua Hynudai</div>
-          <div className="col">HoroMetro Inicial</div>
-          <div className="col">HoroMetro Final</div>
-          <div className="col">Abril-2022</div>
+          <h4 className="col">Grua Hynudai</h4>
         </div>
-        <label className="form-label">Realizar Carga</label>
         <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon3">
             Horometro:
@@ -118,11 +75,13 @@ const Hyundai = () => {
             onChange={handleInput}
           />
         </div>
-        {/* <div className="d-md-flex justify-content-md-center"> */}
-        <button type="submit" className="btn btn-primary" onClick={handleAdd}>
+        <button
+          type="submit"
+          className="btn btn-primary mb-3 align-self-center"
+          onClick={handleAdd}
+        >
           Carga Combustible
         </button>
-        {/* </div> */}
       </form>
       <TablaCargaCombustible props={"hyundai"} />
     </>
