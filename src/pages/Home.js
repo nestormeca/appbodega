@@ -6,9 +6,5 @@ import Navbar from "../components/Navbar";
 export const Home = () => {
   //const classes = useStyles();
 
-  return (
-    <div className="container">
-      <Navbar />
-    </div>
-  );
+  return <div></div>;
 };

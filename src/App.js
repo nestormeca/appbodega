@@ -13,6 +13,7 @@ import Hyster from "./pages/Hyster";
 import Hyundai from "./pages/Hyundai";
 import Komatsu from "./pages/Komatsu";
 import OtrosVehiculos from "./pages/OtrosVehiculos";
+import Navbar from "./components/Navbar";
 
 function App() {
   //const { currentUser } = useContext(AuthContext);
@@ -22,15 +23,17 @@ function App() {
   // };
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          //<RequireAuth>
-          <Home />
-          //</RequireAuth>
-        }
-      >
+    <>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            //<RequireAuth>
+            <Home />
+            //</RequireAuth>
+          }
+        ></Route>
         <Route path="login" element={<Login />} />
         <Route path="bodega" element={<Bodega />} />
         <Route path="bodega/grupoelectrogeno" element={<GrupoElectrogeno />} />
@@ -41,8 +44,8 @@ function App() {
 
         <Route path="abastecimiento" element={<Abastecimiento />} />
         <Route path="mantencion" element={<Mantencion />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }
 

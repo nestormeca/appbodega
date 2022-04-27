@@ -16,6 +16,11 @@ export const getDate = () => {
 };
 
 //export const fecha = getFecha();
+export const getMonth2 = () => {
+  let id = new Date();
+  let milli = id.getTime();
+  return console.log(milli);
+};
 
 export const getMonth = () => {
   let date = new Date();

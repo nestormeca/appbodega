@@ -26,6 +26,11 @@
 - Refactoring pagina de hyundai
 - Se creo un helpert que maneja las fechas
 
+26-27-04-2022
+
+- Se refactorizaron las paginas de los equipos.
+- Se creo el helpert que maneja los inputs de las cargas de combustible
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
