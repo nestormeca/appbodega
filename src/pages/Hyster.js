@@ -6,7 +6,7 @@ import { Imputs } from "../components/Imputs";
 const Hyster = () => {
   return (
     <div className="container mt-5">
-      <Imputs equipo={"hyster"} desc={"Grua Hyster"} />
+      <Imputs equipo={"hyster"} desc={"Hyster"} />
       <TablaCargaCombustible props={"hyster"} />
     </div>
   );

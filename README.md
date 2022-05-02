@@ -31,6 +31,10 @@
 - Se refactorizaron las paginas de los equipos.
 - Se creo el helpert que maneja los inputs de las cargas de combustible
 
+01-05-2022
+
+- Se creo el componente de otros vehiculos. Se adapto la Tabla de Cargas agregando el vehiculo que se esta cargando.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

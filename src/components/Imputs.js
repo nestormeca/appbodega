@@ -10,14 +10,14 @@ export const Imputs = ({ equipo, desc }) => {
   const handleInput = (e) => {
     const id = e.target.id;
     const value = e.target.value;
-    const grua = e.target.grua;
-    setData({ ...data, [id]: value, grua });
+    //const grua = e.target.grua;
+    setData({ ...data, [id]: value });
+    //console.log(grua);
   };
 
   const handleAdd = async (e) => {
     e.preventDefault();
 
-    console.log(1);
     try {
       await setDoc(
         doc(cargaDB, `${equipo}`, `${getMonth()}`, `${getMonth2()}`),
@@ -25,6 +25,7 @@ export const Imputs = ({ equipo, desc }) => {
           contador: `${data.contador}`,
           horometro: `${data.horometro}`,
           litros: `${data.litros}`,
+          equipo: `${desc}`,
           fecha: getDate(),
         }
       );
@@ -83,7 +84,7 @@ export const Imputs = ({ equipo, desc }) => {
           className="btn btn-primary mb-3 align-self-center"
           onClick={handleAdd}
         >
-          Carga Combustible
+          Cargar Combustible
         </button>
       </form>
     </>

@@ -41,13 +41,13 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item p-2">
-              <span class="btn btn-l btn-outline-primary">Sign up</span>
+              <span className="btn btn-l btn-outline-primary">Sign up</span>
             </li>
           </ul>
         </header>
       </div>
 
-      <div class="b-example-divider"></div>
+      <div className="b-example-divider"></div>
     </>
   );
 };

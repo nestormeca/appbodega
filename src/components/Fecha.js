@@ -19,7 +19,7 @@ export const getDate = () => {
 export const getMonth2 = () => {
   let id = new Date();
   let milli = id.getTime();
-  return console.log(milli);
+  return milli;
 };
 
 export const getMonth = () => {

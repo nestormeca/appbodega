@@ -1,55 +1,35 @@
-import React from "react";
-import { setDoc, doc, collection } from "firebase/firestore";
-import { db } from "../firebase";
-import { useState } from "react";
+import React, { useState } from "react";
+import { setDoc, doc } from "firebase/firestore";
+import { getDate, getMonth, cargaDB, getMonth2 } from "../components/Fecha";
 import { TablaCargaCombustible } from "../components/TablaCargaCombustible";
+import { cargaInputs } from "../formcarga";
+import useStyles from "../styles";
 
 const OtrosVehiculos = () => {
   const [data, setData] = useState({});
+  const [equipo, setEquipo] = useState({});
+  const classes = useStyles();
 
-  const getFecha = () => {
-    let date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let hour = date.toLocaleTimeString();
-
-    if (month < 10) {
-      return `${day}-0${month}-${year}-${hour}`;
-    } else {
-      return `${day}-${month}-${year}-${hour}`;
-    }
-  };
-
-  const month2 = () => {
-    let date = new Date();
-    let month = date.getMonth() + 1;
-    return month;
-  };
-
-  const mes = month2();
+  console.log(equipo);
 
   const handleInput = (e) => {
     const id = e.target.id;
     const value = e.target.value;
-    const grua = e.target.grua;
-    setData({ ...data, [id]: value, grua });
+    setData({ ...data, [id]: value });
   };
-
-  const cargaDB = collection(db, "cargaCombustible");
 
   const handleAdd = async (e) => {
     e.preventDefault();
 
     try {
       await setDoc(
-        doc(cargaDB, "otrosvehiculos", `Mes-${mes}`, `${getFecha()}`),
+        doc(cargaDB, "otrosvehiculos", `${getMonth()}`, `${getMonth2()}`),
         {
           contador: `${data.contador}`,
           horometro: `${data.horometro}`,
           litros: `${data.litros}`,
-          vehiculo: `${data.vehiculo}`,
-          fecha: getFecha(),
+          equipo: `${equipo}`,
+          fecha: getDate(),
         }
       );
     } catch (error) {
@@ -57,32 +37,53 @@ const OtrosVehiculos = () => {
     }
   };
 
-  //   const handleAdd = async (e) => {
-  //     e.preventDefault();
-
-  //     const equipo = doc(db, "komatsu");
-  //     try {
-  //       const res = await updateDoc(equipo, {
-  //         contador: arrayUnion(`${data.contador}`),
-  //         horometro: arrayUnion(`${data.horometro}`),
-  //         litros: arrayUnion(`${data.litros}`),
-  //         fecha: arrayUnion(`${getFecha()}`),
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
   return (
-    <>
-      <form className="container w-50 mt-5 mb-3">
+    <div className="container mt-5">
+      <form className="container w-50 mt-5 justify-content-center">
         <div className="row align-items-center">
-          <div className="col">Otros Vehiculos</div>
-          <div className="col">HoroMetro Inicial</div>
-          <div className="col">HoroMetro Final</div>
-          <div className="col">Abril-2022</div>
+          <h4 className="col">Otros Vehiculos</h4>
         </div>
-        <label className="form-label">Realizar Carga</label>
+        {/* <div className="input-group mb-3">
+          <span className="input-group-text" id="basic-addon3">
+            Vehiculo:
+          </span>
+          <input
+            className="form-control"
+            id="equipo"
+            label="Vehiculo"
+            type="strim"
+            placeholder="Vehiculo"
+            onChange={handleInput}
+          />
+        </div> */}
+
+        <select
+          id="equipo"
+          value={equipo}
+          onChange={(e) => {
+            const selectedEquipo = e.target.value;
+            setEquipo(selectedEquipo);
+          }}
+        >
+          <option value="equipo" selected disabled hidden>
+            Selecciona un Equipo
+          </option>
+          <option value="komatsu">Komatsu</option>
+          <option value="hyundai">Hyundai</option>
+          <option value="hyster">Hyster</option>
+        </select>
+        {/* {cargaInputs.map((input) => (
+          <div className={classes.formInput} key={input.id}>
+            <label>{input.label}</label>
+            <input
+              id={input.id}
+              type={input.type}
+              placeholder={input.placeholder}
+              onChange={handleInput}
+            />
+          </div>
+        ))} */}
+
         <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon3">
             Horometro:
@@ -121,26 +122,17 @@ const OtrosVehiculos = () => {
             placeholder="Contador"
             onChange={handleInput}
           />
-          <span className="input-group-text" id="basic-addon3">
-            Vehiculo:
-          </span>
-          <input
-            className="form-control"
-            id="vehiculo"
-            label="vehiculo"
-            type="strim"
-            placeholder="Vehiculo"
-            onChange={handleInput}
-          />
         </div>
-        {/* <div className="d-md-flex justify-content-md-center"> */}
-        <button type="submit" className="btn btn-primary" onClick={handleAdd}>
-          Carga Combustible
+        <button
+          type="submit"
+          className="btn btn-primary mb-3 align-self-center"
+          onClick={handleAdd}
+        >
+          Cargar Combustible
         </button>
-        {/* </div> */}
       </form>
-      <TablaCargaCombustible props={"otrosvehiculos"} />
-    </>
+      <TablaCargaCombustible props={"otrosvehiculos"} equipo={"otros"} />
+    </div>
   );
 };
 

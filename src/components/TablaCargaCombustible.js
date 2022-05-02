@@ -3,13 +3,16 @@ import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
+import { getMonth } from "./Fecha";
 
 export const TablaCargaCombustible = ({ props }) => {
   const [data, setData] = useState([]);
 
+  console.log(data);
+
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
-    // { field: "grua", headerName: "Equipo", width: 130 },
+    { field: "equipo", headerName: "Equipo", width: 130 },
     { field: "horometro", headerName: "Horometro", width: 150 },
     {
       field: "litros",
@@ -32,7 +35,7 @@ export const TablaCargaCombustible = ({ props }) => {
 
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, "cargaCombustible", `${props}`, "04-2022"),
+      collection(db, "cargaCombustible", `${props}`, `${getMonth()}`),
       (snapShot) => {
         let list = [];
         snapShot.docs.forEach((doc) => {
@@ -50,17 +53,17 @@ export const TablaCargaCombustible = ({ props }) => {
     };
   }, []);
 
-  const litrosCargados = data.map((mov, i) => {
+  const litrosCargados = data.map((mov) => {
     return parseInt(mov.litros);
   });
 
-  const sumatoria = litrosCargados.reduce((acc, cur, i, arr) => {
+  const sumatoria = litrosCargados.reduce((acc, cur) => {
     return acc + cur;
   }, 0);
 
   return (
     <Container style={{ height: 400, width: 700, textAlign: "center" }}>
-      Litros Cargados: {sumatoria}Lts
+      <h2>Total de Litros Cargados: {sumatoria}</h2>
       <DataGrid
         className="mt-3"
         rows={data}
