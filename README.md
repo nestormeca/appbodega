@@ -35,6 +35,11 @@
 
 - Se creo el componente de otros vehiculos. Se adapto la Tabla de Cargas agregando el vehiculo que se esta cargando.
 
+04-05-2022
+
+- Se agregaron en el select todos los equipos disponibles
+- Se esta creando las funciones que me permitan obtener los litros cargados por equipo en la pagina de otros equipos
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

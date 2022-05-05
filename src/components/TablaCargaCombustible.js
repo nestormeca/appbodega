@@ -57,6 +57,15 @@ export const TablaCargaCombustible = ({ props }) => {
     return parseInt(mov.litros);
   });
 
+  const equipos = data.filter((equi) => {
+    return equi.equipo === "volvo";
+  });
+
+  const volvo = equipos.map((mov) => {
+    return mov.litros;
+  });
+
+  console.log(volvo);
   const sumatoria = litrosCargados.reduce((acc, cur) => {
     return acc + cur;
   }, 0);
@@ -72,6 +81,7 @@ export const TablaCargaCombustible = ({ props }) => {
         rowsPerPageOptions={[30]}
         //checkboxSelection
       />
+      <h1>{volvo}</h1>
     </Container>
   );
 };

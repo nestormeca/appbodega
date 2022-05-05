@@ -1,136 +1,38 @@
 import React, { useState } from "react";
-import { setDoc, doc } from "firebase/firestore";
-import { getDate, getMonth, cargaDB, getMonth2 } from "../components/Fecha";
+
 import { TablaCargaCombustible } from "../components/TablaCargaCombustible";
-import { cargaInputs } from "../formcarga";
-import useStyles from "../styles";
+import { Imputs } from "../components/Imputs";
 
 const OtrosVehiculos = () => {
-  const [data, setData] = useState({});
-  const [equipo, setEquipo] = useState({});
-  const classes = useStyles();
-
-  console.log(equipo);
-
-  const handleInput = (e) => {
-    const id = e.target.id;
-    const value = e.target.value;
-    setData({ ...data, [id]: value });
-  };
-
-  const handleAdd = async (e) => {
-    e.preventDefault();
-
-    try {
-      await setDoc(
-        doc(cargaDB, "otrosvehiculos", `${getMonth()}`, `${getMonth2()}`),
-        {
-          contador: `${data.contador}`,
-          horometro: `${data.horometro}`,
-          litros: `${data.litros}`,
-          equipo: `${equipo}`,
-          fecha: getDate(),
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [equipo, setEquipo] = useState("Elegie Equipo...");
 
   return (
     <div className="container mt-5">
-      <form className="container w-50 mt-5 justify-content-center">
-        <div className="row align-items-center">
-          <h4 className="col">Otros Vehiculos</h4>
-        </div>
-        {/* <div className="input-group mb-3">
-          <span className="input-group-text" id="basic-addon3">
-            Vehiculo:
-          </span>
-          <input
-            className="form-control"
-            id="equipo"
-            label="Vehiculo"
-            type="strim"
-            placeholder="Vehiculo"
-            onChange={handleInput}
-          />
-        </div> */}
-
-        <select
-          id="equipo"
-          value={equipo}
-          onChange={(e) => {
-            const selectedEquipo = e.target.value;
-            setEquipo(selectedEquipo);
-          }}
-        >
-          <option value="equipo" selected disabled hidden>
-            Selecciona un Equipo
-          </option>
-          <option value="komatsu">Komatsu</option>
-          <option value="hyundai">Hyundai</option>
-          <option value="hyster">Hyster</option>
-        </select>
-        {/* {cargaInputs.map((input) => (
-          <div className={classes.formInput} key={input.id}>
-            <label>{input.label}</label>
-            <input
-              id={input.id}
-              type={input.type}
-              placeholder={input.placeholder}
-              onChange={handleInput}
-            />
-          </div>
-        ))} */}
-
-        <div className="input-group mb-3">
-          <span className="input-group-text" id="basic-addon3">
-            Horometro:
-          </span>
-          <input
-            className="form-control"
-            id="horometro"
-            label="horometro"
-            type="number"
-            placeholder="Horometro"
-            onChange={handleInput}
-          />
-        </div>
-        <div className="input-group mb-3">
-          <span className="input-group-text" id="basic-addon3">
-            Litros Cargados:
-          </span>
-          <input
-            className="form-control"
-            id="litros"
-            label="litros"
-            type="number"
-            placeholder="Litros Cargados"
-            onChange={handleInput}
-          />
-        </div>
-        <div className="input-group mb-3">
-          <span className="input-group-text" id="basic-addon3">
-            Contador:
-          </span>
-          <input
-            className="form-control"
-            id="contador"
-            label="contador"
-            type="number"
-            placeholder="Contador"
-            onChange={handleInput}
-          />
-        </div>
-        <button
-          type="submit"
-          className="btn btn-primary mb-3 align-self-center"
-          onClick={handleAdd}
-        >
-          Cargar Combustible
-        </button>
-      </form>
+      <select
+        id="equipo"
+        value={equipo}
+        onChange={(e) => {
+          const selectedEquipo = e.target.value;
+          setEquipo(selectedEquipo);
+        }}
+      >
+        <option value="equipo" selected disabled hidden>
+          Selecciona un Equipo
+        </option>
+        <option value="calefactores">Calefactores</option>
+        <option value="mercedes_byrs-78">Mercedes BYRS-78</option>
+        <option value="mercedes_psjk-46">Mercedes PSJK-46</option>
+        <option value="volvo">VOLVO</option>
+        <option value="kia">KIA GGYH-91</option>
+        <option value="bidones">Bidones Porteria</option>
+        <option value="nissanRL">NP-300 R.L</option>
+        <option value="nissanJH">NP-300 J.H</option>
+        <option value="ssangyongNM">SsangYong CCWD-82</option>
+        <option value="ssangyongBRI">SsangYong Brigada</option>
+        <option value="hyundai">Hyundai LJDX-25</option>
+        <option value="hylux">Hylux E-C</option>
+      </select>
+      <Imputs equipo={"otrosvehiculos"} desc={`${equipo}`} />
       <TablaCargaCombustible props={"otrosvehiculos"} equipo={"otros"} />
     </div>
   );
