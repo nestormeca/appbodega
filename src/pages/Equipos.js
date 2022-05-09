@@ -27,6 +27,12 @@ const Equipos = () => {
           <Link className="p-3 border bg-light text-center" to="otrosvehiculos">
             Otros Vehiculos
           </Link>
+          <Link
+            className="p-3 border bg-light text-center"
+            to="cargaporequipos"
+          >
+            Resumen
+          </Link>
         </div>
       </div>
     </div>

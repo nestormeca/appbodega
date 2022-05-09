@@ -7,7 +7,7 @@ const Hyster = () => {
   return (
     <div className="container mt-5">
       <Imputs equipo={"hyster"} desc={"Hyster"} />
-      <TablaCargaCombustible props={"hyster"} />
+      <TablaCargaCombustible props={"hyster"} equipo={"hyster"} />
     </div>
   );
 };

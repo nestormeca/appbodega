@@ -40,6 +40,17 @@
 - Se agregaron en el select todos los equipos disponibles
 - Se esta creando las funciones que me permitan obtener los litros cargados por equipo en la pagina de otros equipos
 
+05-05-2022
+
+- Se ajustaron el select para que tubieran el mismo tamano.
+- Cree la funcion que me permite tener el consumo de cada equipo en la pagina otrosvehiculos
+
+07-08-05-2022
+-Refactorizacion del codigo.
+-Se creo las funciones que va registrando el total cargado por cada equipo.
+
+- Quede en pendiente si se va a mostrar cada equipo o los otros equipos en general.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

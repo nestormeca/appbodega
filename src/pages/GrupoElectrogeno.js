@@ -7,7 +7,10 @@ const GrupoElectrogeno = () => {
   return (
     <div className="container mt-5">
       <Imputs equipo={"grupoElectrogeno"} desc={"Grupo Electrogeno"} />
-      <TablaCargaCombustible props={"grupoElectrogeno"} />
+      <TablaCargaCombustible
+        props={"grupoElectrogeno"}
+        equipo={"grupoElectrogeno"}
+      />
     </div>
   );
 };

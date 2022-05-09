@@ -7,7 +7,7 @@ const Komatsu = () => {
   return (
     <div className="container mt-5">
       <Imputs equipo={"komatsu"} desc={"Komatsu FD-135-8"} />
-      <TablaCargaCombustible props={"komatsu"} equipo={"Komatsu FD-135-8"} />
+      <TablaCargaCombustible props={"komatsu"} equipo={"komatsu"} />
     </div>
   );
 };

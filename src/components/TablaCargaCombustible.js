@@ -2,37 +2,14 @@ import { Container } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { getMonth } from "./Fecha";
+import { columns } from "../formcarga";
 
-export const TablaCargaCombustible = ({ props }) => {
+export const TablaCargaCombustible = ({ props, equipo }) => {
   const [data, setData] = useState([]);
 
-  console.log(data);
-
-  const columns = [
-    // { field: "id", headerName: "ID", width: 70 },
-    { field: "equipo", headerName: "Equipo", width: 130 },
-    { field: "horometro", headerName: "Horometro", width: 150 },
-    {
-      field: "litros",
-      headerName: "Litros Cargados",
-      type: "number",
-      width: 150,
-    },
-    {
-      field: "contador",
-      headerName: "Contador",
-      type: "number",
-      width: 90,
-    },
-    {
-      field: "fecha",
-      headerName: "Fecha y Hora",
-      width: 200,
-    },
-  ];
-
+  const totalizadorDeLitros = doc(db, "totalizadorDeLitros", `${equipo}`);
   useEffect(() => {
     const unsub = onSnapshot(
       collection(db, "cargaCombustible", `${props}`, `${getMonth()}`),
@@ -54,21 +31,27 @@ export const TablaCargaCombustible = ({ props }) => {
   }, []);
 
   const litrosCargados = data.map((mov) => {
-    return parseInt(mov.litros);
-  });
-
-  const equipos = data.filter((equi) => {
-    return equi.equipo === "volvo";
-  });
-
-  const volvo = equipos.map((mov) => {
     return mov.litros;
   });
 
-  console.log(volvo);
   const sumatoria = litrosCargados.reduce((acc, cur) => {
     return acc + cur;
   }, 0);
+
+  useEffect(async () => {
+    const litraje = await updateDoc(
+      totalizadorDeLitros,
+      {
+        litrosCargados: parseInt(`${sumatoria}`),
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    return () => {
+      litraje();
+    };
+  }, [sumatoria]);
 
   return (
     <Container style={{ height: 400, width: 700, textAlign: "center" }}>
@@ -81,7 +64,6 @@ export const TablaCargaCombustible = ({ props }) => {
         rowsPerPageOptions={[30]}
         //checkboxSelection
       />
-      <h1>{volvo}</h1>
     </Container>
   );
 };

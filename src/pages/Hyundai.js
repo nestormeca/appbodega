@@ -7,7 +7,7 @@ const Hyundai = () => {
   return (
     <div className="container mt-5">
       <Imputs equipo={"hyundai"} desc={"Hynudai 33DT-7"} />
-      <TablaCargaCombustible props={"hyundai"} />
+      <TablaCargaCombustible props={"hyundai"} equipo={"hyundai"} />
     </div>
   );
 };
