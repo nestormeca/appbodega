@@ -1,7 +1,7 @@
 import React from "react";
 
-import { TablaCargaCombustible } from "../components/TablaCargaCombustible";
-import { Imputs } from "../components/Imputs";
+import { TablaCargaCombustible } from "../../components/TablaCargaCombustible";
+import { Imputs } from "../../components/Imputs";
 
 const GrupoElectrogeno = () => {
   return (

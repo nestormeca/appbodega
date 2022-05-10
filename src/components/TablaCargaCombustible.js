@@ -30,6 +30,8 @@ export const TablaCargaCombustible = ({ props, equipo }) => {
     };
   }, []);
 
+  console.log(data);
+
   const litrosCargados = data.map((mov) => {
     return mov.litros;
   });

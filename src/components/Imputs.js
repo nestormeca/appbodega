@@ -38,12 +38,12 @@ export const Imputs = ({ equipo, desc }) => {
   return (
     <>
       <form className="container w-50 mt-3 justify-content-center">
-        {/* <div className="row align-items-center">
+        <div className="row align-items-center">
           <h4 className="col">{desc}</h4>
-        </div> */}
+        </div>
         <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon3">
-            Horometro:
+            Hr/Km:
           </span>
           <input
             className="form-control"

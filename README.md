@@ -51,6 +51,10 @@
 
 - Quede en pendiente si se va a mostrar cada equipo o los otros equipos en general.
 
+09-05-2022
+
+- Se crearon la carpeta equipos y se trasladaron alli todos las paginas de todos los equipos.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
